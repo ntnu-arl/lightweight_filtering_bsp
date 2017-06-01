@@ -5,6 +5,14 @@
  *      Author: Bloeschm
  */
 
+/*
+ * This code has been modified from the original to enable the 
+ * propagation steps described as part of the Uncertainty-aware Receding
+ * Horizon Exploration and Mapping planner.
+ * 
+ * Authors of modifications: C. Papachristos, 2017
+ */
+
 #ifndef LWF_FilterBase_HPP_
 #define LWF_FilterBase_HPP_
 
@@ -119,6 +127,10 @@ class FilterBase: public PropertyHandler{
     safeWarningTime_ = t;
     frontWarningTime_ = t;
     gotFrontWarning_ = false;
+    /*
+     * Bsp: clear timeline to allow time-jumps
+     */
+    predictionTimeline_.clear();
   }
   template<int i=0, typename std::enable_if<(i<nUpdates_)>::type* = nullptr>
   void registerUpdates(){
