@@ -15,6 +15,10 @@ namespace LWF{
 template<typename DERIVED, typename Output, typename... Inputs>
 class ModelBase{
  public:
+  /*
+   * Bsp: Aligned new Inherited to: Prediction, CoordinateTransform, Update, GIFPrediction, FilterState, FilterBase
+   */
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   static const unsigned int nInputs_ = sizeof...(Inputs);
   typedef Output mtOutput;
   typedef std::tuple<Inputs...> mtInputTuple;

@@ -80,6 +80,10 @@ class MeasurementTimeline{
 template<typename Prediction,typename... Updates>
 class FilterBase: public PropertyHandler{
  public:
+  /*
+   * Bsp: Aligned new Inherited to: N/A
+   */
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   typedef Prediction mtPrediction;
   typedef typename mtPrediction::mtState mtState;
   static const unsigned int D_ = mtState::D_;

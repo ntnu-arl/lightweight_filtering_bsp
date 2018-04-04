@@ -19,6 +19,10 @@ namespace LWF{
 template<typename DERIVED, typename GET, unsigned int D, unsigned int E = D>
 class ElementBase{
  public:
+  /*
+   * Bsp: Aligned new Inherited to: AuxilliaryElement, ScalarElement, VectorElement, NormalVectorElement, ArrayElement
+   */
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   ElementBase(){};
   virtual ~ElementBase(){};
   static const unsigned int D_ = D;
@@ -231,7 +235,6 @@ class QuaternionElement: public ElementBase<QuaternionElement,QPD,3>{
 
 class NormalVectorElement: public ElementBase<NormalVectorElement,NormalVectorElement,2>{
  public:
-  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   QPD q_;
   const V3D e_x;
   const V3D e_y;
