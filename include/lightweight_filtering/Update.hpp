@@ -15,6 +15,8 @@
 #include "lightweight_filtering/OutlierDetection.hpp"
 #include <list>
 
+#include <Eigen/StdVector> //Eigen std::vector allocator fix
+
 namespace LWF{
 
 template<typename Innovation, typename FilterState, typename Meas, typename Noise, typename OutlierDetection = OutlierDetectionDefault, bool isCoupled = false>
@@ -259,8 +261,10 @@ class Update: public ModelBase<Update<Innovation,FilterState,Meas,Noise,OutlierD
     successfulUpdate_ = false;
     candidateCounter_ = 0;
 
-    std::list<double> scores;
-    std::list<mtState> states;
+    //std::list<double> scores;
+    //std::list<mtState> states;
+    std::vector<double> scores; //Eigen std::vector allocator fix
+    std::vector<mtState, Eigen::aligned_allocator<mtState>> states; //Eigen std::vector allocator fix
     double bestScore = -1.0;
     mtState bestState;
     MXD bestCov;
